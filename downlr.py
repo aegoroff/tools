@@ -11,6 +11,21 @@ __author__ = 'egorov'
 _FILE_ENCODING = 'UTF-8'
 _APP_CONFIG_PATH = 'config.json'
 
+'''
+config.json example:
+
+{
+    "folder1": [
+        "http://domain1.com/file1.jpg",
+        "http://domain1.com/file2.jpg"
+    ],
+    "folder2": [
+        "http://domain2.com/file1.jpg",
+        "http://domain2.com/file2.jpg"
+    ]
+}
+
+'''
 
 def writefile(path, data, mode):
     if path == '':
