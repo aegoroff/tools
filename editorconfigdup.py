@@ -23,11 +23,11 @@ def main():
             ix += 1
             parts = line.split('=')
             if parts.__len__() == 2:
-                key = parts[0]
+                key = parts[0].strip()
                 if key not in duplicates:
-                    duplicates[parts[0]] = [str(ix)]
+                    duplicates[key] = [str(ix)]
                 else:
-                    duplicates[parts[0]].append(str(ix))
+                    duplicates[key].append(str(ix))
             line = f.readline()
 
     for pair in duplicates:
