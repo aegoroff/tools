@@ -7,7 +7,7 @@ __author__ = 'egr'
 
 def main():
     parser = argparse.ArgumentParser(description='Editorconfig duplication finder')
-    parser.add_argument('-p', '--path', dest='path', help='path to editorconfig file')
+    parser.add_argument('-p', '--path', required=True, dest='path', help='path to editorconfig file')
 
     args = parser.parse_args()
 
