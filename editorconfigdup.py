@@ -1,4 +1,5 @@
 import argparse
+import os
 import sys
 
 __author__ = 'egr'
@@ -9,6 +10,10 @@ def main():
     parser.add_argument('-p', '--path', dest='path', help='path to editorconfig file')
 
     args = parser.parse_args()
+
+    if args.path is None or not os.path.exists(args.path):
+        print 'File not found'
+        return
 
     ix = 0
     duplicates = {}
