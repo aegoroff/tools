@@ -16,7 +16,7 @@ def main():
         return
 
     ix = 0
-    duplicates = {}
+    options_map = {}
     with open(args.path, "r") as f:
         line = f.readline()
         while line is not None and line.__len__() > 0:
@@ -24,15 +24,15 @@ def main():
             parts = line.split('=')
             if parts.__len__() == 2:
                 key = parts[0].strip()
-                if key not in duplicates:
-                    duplicates[key] = [str(ix)]
+                if key not in options_map:
+                    options_map[key] = [str(ix)]
                 else:
-                    duplicates[key].append(str(ix))
+                    options_map[key].append(str(ix))
             line = f.readline()
 
-    for pair in duplicates:
-        if duplicates[pair].__len__() > 1:
-            print pair + ': ' + ', '.join(duplicates[pair])
+    for pair in options_map:
+        if options_map[pair].__len__() > 1:
+            print pair + ': ' + ', '.join(options_map[pair])
 
 
 if __name__ == '__main__':
