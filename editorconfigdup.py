@@ -3,10 +3,6 @@ import sys
 
 __author__ = 'egr'
 
-INCLUDE = 'include'
-X86 = 'x86'
-X64 = 'x64'
-
 
 def main():
     parser = argparse.ArgumentParser(description='Editorconfig duplication finder')
