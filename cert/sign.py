@@ -17,8 +17,8 @@ def main():
 
     exc = execute.Execute()
 
-    exc.runProc([os.path.join(args.toolpath, 'signtool.exe'), 'sign', '/f', args.pfx, '/p', args.password, '/t', args.timestamp, '/v',
-                 args.target])
+    exc.run_proc([os.path.join(args.toolpath, 'signtool.exe'), 'sign', '/f', args.pfx, '/p', args.password, '/t', args.timestamp, '/v',
+                  args.target])
 
     return 0
 

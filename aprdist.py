@@ -12,7 +12,7 @@ X64 = 'x64'
 
 
 def main():
-    logging.basicConfig(format=("%(asctime).19s %(levelname)s %(message)s "))
+    logging.basicConfig(format="%(asctime).19s %(levelname)s %(message)s ")
     logging.getLogger().setLevel(logging.INFO)
 
     parser = argparse.ArgumentParser(description='APR lib build results distributive automation tool')

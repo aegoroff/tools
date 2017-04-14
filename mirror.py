@@ -8,7 +8,7 @@ __author__ = 'egr'
 
 
 def main():
-    logging.basicConfig(format=("%(asctime).19s %(levelname)s %(message)s "))
+    logging.basicConfig(format="%(asctime).19s %(levelname)s %(message)s ")
     logging.getLogger().setLevel(logging.INFO)
 
     parser = argparse.ArgumentParser(description='Mirror copier')

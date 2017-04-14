@@ -2,8 +2,9 @@ __author__ = 'egr'
 
 import subprocess
 
+
 class Execute:
-    def runProc(self, params):
+    @staticmethod
+    def run_proc(params):
         proc = subprocess.Popen(params)
         proc.wait()
-  

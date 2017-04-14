@@ -27,6 +27,7 @@ config.json example:
 
 '''
 
+
 def writefile(path, data, mode):
     if path == '':
         return
@@ -66,7 +67,7 @@ def download(p, target, base_path):
 
 
 def main():
-    logging.basicConfig(format=("%(asctime).19s %(levelname)s %(message)s "))
+    logging.basicConfig(format="%(asctime).19s %(levelname)s %(message)s ")
     logging.getLogger().setLevel(logging.INFO)
 
     parser = argparse.ArgumentParser(description='Files downloader')
@@ -80,6 +81,7 @@ def main():
         for f in items[item]:
             logging.info(' Downloading %s ...', f)
             download(f, item, args.base_path)
+
 
 if __name__ == '__main__':
     sys.exit(main())
