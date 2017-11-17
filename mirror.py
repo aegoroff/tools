@@ -14,7 +14,7 @@ def main():
     parser = argparse.ArgumentParser(description='Mirror copier')
     parser.add_argument('-b', '--base', dest='base_path', help='Base path')
     parser.add_argument('-s', '--source', dest='source_path', help='Source path')
-    parser.add_argument('-t', '--target', dest='target_path', help='Source path')
+    parser.add_argument('-t', '--target', dest='target_path', help='Target path')
 
     args = parser.parse_args()
 
@@ -33,7 +33,7 @@ def main():
     files = os.listdir(args.base_path)
     for filename in files:
         src = os.path.join(args.source_path, filename)
-        if os.path.exists(args.base_path):
+        if os.path.exists(args.base_path) and os.path.exists(src):
             logging.info('found file: %s', src)
             shutil.copy(src, args.target_path)
         else:
