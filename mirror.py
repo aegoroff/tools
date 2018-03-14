@@ -33,9 +33,9 @@ def main():
     files = os.listdir(args.base_path)
     for filename in files:
         src = os.path.join(args.source_path, filename)
-        if os.path.exists(args.base_path) and os.path.exists(src):
-            logging.info('found file: %s', src)
+        if os.path.exists(src) and not os.path.isdir(src):
             shutil.copy(src, args.target_path)
+            logging.info('copied to %s', os.path.join(args.target_path, filename))
         else:
             logging.info('file %s not found ', src)
 
