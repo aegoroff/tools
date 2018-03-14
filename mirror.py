@@ -30,14 +30,24 @@ def main():
         logging.error('Unexist target %s ', args.target_path)
         return
 
-    files = os.listdir(args.base_path)
-    for filename in files:
-        src = os.path.join(args.source_path, filename)
-        if os.path.exists(src) and not os.path.isdir(src):
-            shutil.copy(src, args.target_path)
-            logging.info('copied to %s', os.path.join(args.target_path, filename))
+    mirror(args.base_path, args.source_path, args.target_path)
+
+
+def mirror(base_path, source_path, target_path):
+    content = os.listdir(base_path)
+    for item in content:
+        src = os.path.join(source_path, item)
+        if os.path.exists(src):
+            if os.path.isdir(src):
+                tgt = os.path.join(target_path, item)
+                if not os.path.exists(tgt):
+                    os.mkdir(tgt)
+                mirror(os.path.join(base_path, item), src, tgt)
+            else:
+                shutil.copy(src, target_path)
+                logging.info('copied to %s', os.path.join(target_path, item))
         else:
-            logging.info('file %s not found ', src)
+            logging.info('path %s not found in source', src)
 
 
 if __name__ == '__main__':
