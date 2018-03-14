@@ -1,5 +1,6 @@
 import logging
 import argparse
+import re
 import sys
 import os
 import shutil
@@ -15,6 +16,7 @@ def main():
     parser.add_argument('-b', '--base', dest='base_path', help='Base path')
     parser.add_argument('-s', '--source', dest='source_path', help='Source path')
     parser.add_argument('-t', '--target', dest='target_path', help='Target path')
+    parser.add_argument('-f', '--filter', dest='filter', help='Files filter')
 
     args = parser.parse_args()
 
@@ -30,19 +32,21 @@ def main():
         logging.error('Unexist target %s ', args.target_path)
         return
 
-    mirror(args.base_path, args.source_path, args.target_path)
+    mirror(args.base_path, args.source_path, args.target_path, args.filter)
 
 
-def mirror(base_path, source_path, target_path):
+def mirror(base_path, source_path, target_path, flt):
     content = os.listdir(base_path)
     for item in content:
         src = os.path.join(source_path, item)
+        if flt is not None and not re.match(flt, item) and not os.path.isdir(src):
+            continue
         if os.path.exists(src):
             if os.path.isdir(src):
                 tgt = os.path.join(target_path, item)
                 if not os.path.exists(tgt):
                     os.mkdir(tgt)
-                mirror(os.path.join(base_path, item), src, tgt)
+                mirror(os.path.join(base_path, item), src, tgt, flt)
             else:
                 shutil.copy(src, target_path)
                 logging.info('copied to %s', os.path.join(target_path, item))
