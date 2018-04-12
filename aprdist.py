@@ -82,5 +82,6 @@ def copy_includes(target_path, lib_dir):
                             logging.info('copy template from %s to %s', made_from_template, template_target)
                             shutil.copy(made_from_template, template_target)
 
+
 if __name__ == '__main__':
     sys.exit(main())
