@@ -5,7 +5,6 @@ import os
 import sys
 import shutil
 
-
 __author__ = 'egorov'
 
 _FILE_ENCODING = 'UTF-8'
@@ -23,6 +22,7 @@ consolidate.json example:
 
 '''
 
+
 def read_json(path):
     f = open(path)
     try:
@@ -30,6 +30,7 @@ def read_json(path):
     finally:
         f.close()
     return result
+
 
 def main():
     logging.basicConfig(format="%(asctime).19s %(levelname)s %(message)s ")
