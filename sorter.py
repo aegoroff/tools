@@ -21,10 +21,10 @@ def main():
         logging.error('Unexist path %s ...', args.path)
         return
 
-    mirror(args.path)
+    sort_files_within_path(args.path)
 
 
-def mirror(path):
+def sort_files_within_path(path):
     for root, dirs, files in os.walk(path):
         for item in files:
             src = os.path.join(path, item)
