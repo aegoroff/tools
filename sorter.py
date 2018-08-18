@@ -25,14 +25,14 @@ def main():
 
 
 def mirror(path):
-    content = os.listdir(path)
-    for item in content:
-        src = os.path.join(path, item)
-        created = datetime.fromtimestamp(os.path.getctime(src))
-        destination = os.path.join(path, '{}'.format(created.date()))
-        if not os.path.exists(destination):
-            os.mkdir(destination)
-        shutil.move(src, os.path.join(destination, item))
+    for root, dirs, files in os.walk(path):
+        for item in files:
+            src = os.path.join(path, item)
+            created = datetime.fromtimestamp(os.path.getctime(src))
+            destination = os.path.join(path, '{}'.format(created.date()))
+            if not os.path.exists(destination):
+                os.mkdir(destination)
+            shutil.move(src, os.path.join(destination, item))
 
 
 
