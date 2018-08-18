@@ -33,6 +33,7 @@ def sort_files_within_path(path):
             if not os.path.exists(destination):
                 os.mkdir(destination)
             shutil.move(src, os.path.join(destination, item))
+        break
 
 
 
