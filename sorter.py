@@ -13,7 +13,7 @@ def main():
     logging.getLogger().setLevel(logging.INFO)
 
     parser = argparse.ArgumentParser(description='Files sorter by dates')
-    parser.add_argument('-b', '--path', dest='path', help='Files folder path')
+    parser.add_argument('-p', '--path', dest='path', help='Files folder path')
 
     args = parser.parse_args()
 
